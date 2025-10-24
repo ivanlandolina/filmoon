@@ -9,6 +9,14 @@ import moviesRouter from './routes/movies.routes.js';
 
 const app = express();
 
+// CORS: autorizza il dominio del frontend in produzione
+const allowOrigin = process.env.CORS_ORIGIN || '*';
+app.use(cors({
+  origin: allowOrigin,
+  methods: ['GET','POST','DELETE','PUT','PATCH','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization'],
+}));
+
 // Middlewares
 app.use(cors({ origin: process.env.CLIENT_URL?.split(',') || '*', credentials: true }));
 app.use(express.json());
@@ -22,13 +30,16 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/movies', moviesRouter);
 
-// Global error handler (semplice)
+// Global error handler
 app.use((err, _req, res, _next) => {
   console.error(err);
   res.status(err.status || 500).json({ error: err.message || 'Errore interno' });
 });
 
 const PORT = process.env.PORT || 4000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server on :${PORT}`)
+})
 
 async function start() {
   try {
