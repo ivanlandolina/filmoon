@@ -1,0 +1,77 @@
+/* Sfondo video a schermo intero */
+.register-bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Overlay scuro sopra il video */
+.register-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.75)
+  );
+  z-index: -1;
+}
+
+/* Card del form */
+.register-card {
+  background: rgba(15, 18, 24, 0.9);
+  border: 1px solid rgba(0, 224, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.1);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  max-width: 380px;
+}
+
+.register-card .form-control {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.register-card .form-control:focus {
+  border-color: #00e0ff;
+  box-shadow: 0 0 8px rgba(0, 224, 255, 0.4);
+}
+
+.register-page .logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  color: #00e0ff;
+  text-shadow: 0 0 12px rgba(0, 224, 255, 0.3);
+}
+
+.register-content {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  padding-left: 8vw; 
+  padding-right: 4vw;
+}
+
+.register-form-wrapper {
+  max-width: 380px;
+  width: 100%;
+}
+
+/* Per schermi più piccoli torna centrato */
+@media (max-width: 768px) {
+  .register-content {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

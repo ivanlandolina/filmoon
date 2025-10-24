@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;               
+  letter-spacing: 1px;          
+  color: #ffffff;                
+  text-transform: uppercase;    
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(0, 224, 255, 0.3);
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.logo-text:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 16px rgba(0, 224, 255, 0.6);
+}
+
+/* Pulsanti Navbar */
+.btn-nav-glow {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(0, 224, 255, 0.6);
+  color: #bdeaff;
+  background: transparent;
+  padding: 0.45rem 1.3rem;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-nav-glow:hover {
+  color: #ffffff;
+  background: rgba(0, 224, 255, 0.1);
+  border-color: #00e0ff;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+}
+
+/* Variante riempita */
+.btn-nav-filled {
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(90deg, #007bff, #00c2ff);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-nav-filled:hover {
+  background: linear-gradient(90deg, #00a2ff, #00eaff);
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+.nav-item-text {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  letter-spacing: .2px;
+  color: #cfd9ff !important;
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+.nav-item-text:hover,
+.nav-item-text.active {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(0,224,255,.5);
+}
+
+.btn-nav-logout {
+  border-color: rgba(255, 80, 80, 0.5);
+  color: #ff8080;
+}
+
+.btn-nav-logout:hover {
+  background: rgba(255, 80, 80, 0.15);
+  border-color: #ff4c4c;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255, 80, 80, 0.5);
+}
+
+/* bottone "attivo" (film segnato come visto) */
+.btn-nav-glow.active {
+  background-color: #00e054;
+  color: #0b0e11;
+  border-color: #00e054;
+  box-shadow: 0 0 10px rgba(0, 224, 84, 0.5);
+}
+
+/* effetto hover anche da attivo */
+.btn-nav-glow.active:hover {
+  background-color: #00c94c;
+  border-color: #00c94c;
+}
+
+.btn-nav-glow.active {
+  animation: glowIn 0.3s ease forwards;
+}
+
+@keyframes glowIn {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 224, 84, 0);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 224, 84, 0.5);
+  }
+}
+
+/* STATO ATTIVO: film presente in watchlist */
+.btn-nav-glow.watchlist-active {
+  background-color: #ffcc00; 
+  color: #1b1b1b;
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* effetto hover anche quando attivo */
+.btn-nav-glow.watchlist-active:hover {
+  background-color: #ffd633;
+  border-color: #ffd633;
+  box-shadow: 0 0 12px rgba(255, 214, 51, 0.6);
+}
+
+/* Contenitore dei toast */
+.toast-container {
+  pointer-events: none;
+}
+
+/* Singolo toast */
+.toast-custom {
+  pointer-events: all; 
+  border-radius: 12px;
+  overflow: hidden;
+  animation: slideIn 0.4s ease, fadeOut 0.4s ease 4s forwards;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+/* Varianti colori toast */
+.toast-body.bg-success {
+  background: linear-gradient(90deg, #00b894, #00cec9);
+}
+.toast-body.bg-danger {
+  background: linear-gradient(90deg, #d63031, #ff7675);
+}
+.toast-body.bg-info {
+  background: linear-gradient(90deg, #0984e3, #74b9ff);
+}
+.toast-body.bg-dark {
+  background: rgba(20, 20, 30, 0.85);
+  color: #fff;
+}
+
+/* Animazioni */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+.form-control[type="search"] {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(0,224,255,.25);
+  color: #e4e9f2;
+}
+.form-control[type="search"]::placeholder { color: #9fb3d9; }
+.form-control[type="search"]:focus {
+  border-color: #00e0ff;
+  box-shadow: 0 0 0 .2rem rgba(0,224,255,.2);
+}
+
+.rating-box {
+  background: rgba(12,18,30,.6);
+  border: 1px solid rgba(0,224,255,.18);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.btn-added {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 0.45rem 1.3rem;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(226, 237, 14) !important;
+  color: #0b0e11 !important; 
+  border: none !important;
+}
+
+
+/*  Modale Logout - */
+.logout-modal .modal-content {
+  background: rgba(15, 18, 24, 0.95);
+  border: 1px solid rgba(0, 224, 255, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.15);
+  color: #eaf6ff;
+}
+
+.logout-modal .modal-header {
+  border-bottom: 1px solid rgba(0, 224, 255, 0.2);
+}
+
+.logout-modal .modal-title {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.4rem;
+  color: #bdeaff;
+  text-shadow: 0 0 6px rgba(0, 224, 255, 0.5);
+}
+
+.logout-modal .modal-body {
+  font-size: 0.95rem;
+  color: #d7ecff;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.logout-modal .modal-footer {
+  border-top: 1px solid rgba(0, 224, 255, 0.2);
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Gif all'interno della modale */
+.logout-gif {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 224, 255, 0.25);
+}
+
+/* Pulsante "esci da filmoon" */
+.btn-nav-logout {
+  background: linear-gradient(90deg, #d91a1a, #ff3030);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.25);
+}
+
+.btn-nav-logout:hover {
+  background: linear-gradient(90deg, #ff4444, #ff0000);
+  box-shadow: 0 0 18px rgba(255, 60, 60, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Effetto di comparsa/dissolvenza */
+@keyframes modalGlowIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+    box-shadow: 0 0 0 rgba(0, 224, 255, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 224, 255, 0.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(0, 224, 255, 0.15);
+  }
+}
+
+/* Overlay scuro con leggera sfumatura blu */
+.modal-backdrop.show {
+  opacity: 0.85;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 30, 60, 0.85),
+    rgba(0, 0, 0, 0.9)
+  );
+  transition: opacity 0.3s ease;
+}
+
+

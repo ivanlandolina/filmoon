@@ -1,0 +1,89 @@
+:root {
+  --bg-primary: #14181C;       
+  --bg-secondary: #14181C;    
+  --accent: #1e90ff;           
+  --text-primary: #e4e9f2;    
+  --text-muted: #a1accb;
+  --border-color: #1c3a6d;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bg-secondary) !important;
+}
+
+.navbar-brand, .nav-link {
+  color: var(--text-primary) !important;
+}
+
+.nav-link:hover {
+  color: var(--accent) !important;
+}
+
+/* Card */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: #1275d1;
+  border-color: #1275d1;
+}
+
+/* Forms */
+.form-control {
+  background-color: #0e2349;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(30, 144, 255, 0.25);
+}
+
+/* Toasts */
+.toast {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* Rating stars, badge ecc. */
+.badge {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* === NAVBAR TRASPARENTE === */
+.navbar-transparent {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-transparent .navbar-brand,
+.navbar-transparent .nav-link,
+.navbar-transparent .btn {
+  color: #e4e9f2 !important;
+}
+
+.navbar-transparent .nav-link:hover,
+.navbar-transparent .navbar-brand:hover {
+  color: #1e90ff !important; 
+}
