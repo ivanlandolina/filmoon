@@ -1,12 +1,15 @@
 import { useAuth } from '../state/AuthContext.jsx'
 
+const API_BASE = import.meta.env.VITE_API_BASE || ''; 
+
 export function useApi(){
   const { token } = useAuth()
 
   async function request(method, url, body){
     if (!token) throw new Error('NO_TOKEN')
+    const fullUrl = url.startsWith('http') ? url : `${API_BASE}${url}`;
 
-    const res = await fetch(url, {
+    const res = await fetch(fullUrl, {
       method,
       headers: {
         'Content-Type': 'application/json',
@@ -14,23 +17,11 @@ export function useApi(){
       },
       body: body ? JSON.stringify(body) : undefined,
     })
-
     if (!res.ok) {
-      // prova a leggere il testo di errore, altrimenti status
       const text = await res.text().catch(()=> '')
       throw new Error(text || `HTTP ${res.status}`)
     }
-
-    // se errore 204, non c'è body
-    if (res.status === 204) return null
-
-    // se c'è body, prova a fare il parse json
-    const contentType = res.headers.get('content-type') || ''
-    if (contentType.includes('application/json')) {
-      return res.json()
-    }
-    // fallback in caso non sia json
-    return res.text()
+    return res.json()
   }
 
   return {

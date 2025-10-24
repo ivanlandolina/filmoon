@@ -26,7 +26,7 @@ export default function ListingPage({ kind = 'popular' }) {
   useEffect(() => {
     let cancel = false
     setLoading(true)
-    fetch(`/api/movies/${kind}?page=${page}`)
+    apiFetch(`/api/movies/${kind}?page=${page}`)
       .then(r => r.ok ? r.json() : r.text().then(Promise.reject))
       .then(json => {
         if (cancel) return

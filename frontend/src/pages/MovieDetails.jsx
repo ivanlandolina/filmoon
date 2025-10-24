@@ -47,9 +47,9 @@ export default function MovieDetails() {
         setLoading(true);
         setError("");
         const [m, v, c] = await Promise.all([
-          fetch(`/api/movies/${id}`).then((r) => r.json()),
-          fetch(`/api/movies/${id}/videos`).then((r) => r.json()),
-          fetch(`/api/movies/${id}/credits`).then((r) => r.json()),
+          apiFetch(`/api/movies/${id}`).then((r) => r.json()),
+          apiFetch(`/api/movies/${id}/videos`).then((r) => r.json()),
+          apiFetch(`/api/movies/${id}/credits`).then((r) => r.json()),
         ]);
         if (cancel) return;
         setMovie(m);
@@ -57,7 +57,7 @@ export default function MovieDetails() {
         setCredits({ cast: c?.cast || [], crew: c?.crew || [] });
 
         // raccomandati
-        fetch(`/api/movies/${id}/recommendations`)
+        apiFetch(`/api/movies/${id}/recommendations`)
           .then((r) => (r.ok ? r.json() : Promise.resolve({ results: [] })))
           .then((json) => !cancel && setRecs(json.results || []))
           .catch(() => {});
