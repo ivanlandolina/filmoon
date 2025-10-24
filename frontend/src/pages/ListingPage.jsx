@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Spinner, Alert } from 'react-bootstrap'
 import MovieCard from '../components/MovieCard.jsx'
 import '../styles/movie-card.css'
+import { apiFetch } from '../services/http.js'
 
 const TITLES = {
   popular: 'Popolari',

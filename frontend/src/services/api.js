@@ -1,4 +1,5 @@
 import { useAuth } from '../state/AuthContext.jsx'
+import { apiFetch } from './http.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE || ''; 
 
@@ -9,7 +10,7 @@ export function useApi(){
     if (!token) throw new Error('NO_TOKEN')
     const fullUrl = url.startsWith('http') ? url : `${API_BASE}${url}`;
 
-    const res = await fetch(fullUrl, {
+    const res = await apiFetch(url, {
       method,
       headers: {
         'Content-Type': 'application/json',

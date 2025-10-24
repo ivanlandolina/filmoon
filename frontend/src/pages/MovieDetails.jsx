@@ -11,11 +11,13 @@ import {
 } from "react-bootstrap";
 import { useAuth } from "../state/AuthContext.jsx";
 import { useApi } from "../services/api.js";
+import { apiFetch } from '../services/http.js'
 import { posterUrl } from "../lib/img.js";
 import { useToast } from "../state/ToastContext.jsx";
 import RatingBox from "../components/RatingBox.jsx";
 import CastList from "../components/CastList.jsx";
 import SimilarFilms from "../components/SimilarFilms.jsx";
+
 
 export default function MovieDetails() {
   const { id } = useParams();
