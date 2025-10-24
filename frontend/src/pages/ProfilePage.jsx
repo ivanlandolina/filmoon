@@ -1,8 +1,10 @@
 import { Alert, Spinner, Badge } from "react-bootstrap";
 import { useApi } from "../services/api.js";
+import { apiFetch } from '../services/http.js';
 import { useAuth } from "../state/AuthContext.jsx";
 import { useEffect, useState } from "react";
 import MiniCard from "../components/MiniCard.jsx";
+
 
 export default function ProfilePage() {
   const { user, token } = useAuth();
@@ -47,7 +49,7 @@ export default function ProfilePage() {
     const unique = [...new Set(ids)].slice(0, 60); // safety cap
     const res = await Promise.all(
       unique.map((id) =>
-        fetch(`/api/movies/${id}`)
+        apiFetch(`/api/movies/${id}`)
           .then((r) => (r.ok ? r.json() : null))
           .catch(() => null)
       )

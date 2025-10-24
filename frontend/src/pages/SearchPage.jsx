@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Spinner, Alert } from 'react-bootstrap'
 import MovieCard from '../components/MovieCard.jsx'
+import { apiFetch } from '../services/http.js';
 
 export default function SearchPage(){
   const [sp] = useSearchParams()
@@ -13,7 +14,7 @@ export default function SearchPage(){
   useEffect(()=>{
     if(!q) { setData({results:[]}); setLoading(false); return }
     setLoading(true)
-    fetch(`/api/movies/search?query=${encodeURIComponent(q)}`)
+    apiFetch(`/api/movies/search?query=${encodeURIComponent(q)}`)
       .then(r=> r.ok ? r.json() : r.text().then(Promise.reject))
       .then(json=> { setData(json); setErr('') })
       .catch(()=> setErr('Errore nella ricerca'))
